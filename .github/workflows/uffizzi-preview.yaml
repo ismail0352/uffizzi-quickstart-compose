@@ -156,19 +156,17 @@ jobs:
   deploy-uffizzi-preview:
     name: Use Remote Workflow to Preview on Uffizzi
     needs: render-compose-file
-    uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2.1.0
-    secrets:
-      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
-      url-username: user
-      url-password: ${{ secrets.URL_PASSWORD }}
-    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
+    uses: UffizziCloud/preview-action@v2
     with:
-      compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
-      compose-file-cache-path: docker-compose.rendered.yml
-      server: https://uffizzi.dev.trustcloud.ai
+      compose-file: 'docker-compose.uffizzi.yaml'
+      server: 'https://uffizzi.dev.trustcloud.ai'
+      username: 'user@dev.trustcloud.ai'
+      password: ${{ secrets.URL_PASSWORD }}
+      project: 'trustcloud-dev'
     permissions:
       contents: read
       pull-requests: write
+      id-token: write
       
   # delete-uffizzi-preview:
   #   name: Use Remote Workflow to Delete an Existing Preview
