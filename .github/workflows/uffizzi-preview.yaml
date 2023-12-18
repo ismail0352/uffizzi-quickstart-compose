@@ -161,7 +161,7 @@ jobs:
       compose-file: docker-compose.uffizzi.yaml
       server: https://uffizzi.dev.trustcloud.ai
       username: user@dev.trustcloud.ai
-      password: ${{ secrets.URL_PASSWORD }}
+      password: ${{ secrets.UFFIZZI_PASSWORD }}
       project: trustcloud-dev
     permissions:
       contents: read
