@@ -158,7 +158,7 @@ jobs:
     needs: render-compose-file
     uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2.1.0
     with:
-      compose-file: docker-compose.uffizzi.yaml
+      compose-file: docker-compose.uffizzi.yml
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://uffizzi.dev.trustcloud.ai
       username: user@dev.trustcloud.ai
