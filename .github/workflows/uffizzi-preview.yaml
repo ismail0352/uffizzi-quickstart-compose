@@ -163,7 +163,7 @@ jobs:
       compose-file-cache-path: docker-compose.rendered.yml
       server: 'https://uffizzi.dev.trustcloud.ai'
       username: 'user@dev.trustcloud.ai'
-      password: 'ChangeMeNow' #${{ secrets.UFFIZZI_PASSWORD }}
+      password: ChangeMeNow #${{ secrets.UFFIZZI_PASSWORD }}
       project: 'trustcloud-dev'
     permissions:
       contents: read
