@@ -158,11 +158,11 @@ jobs:
     needs: render-compose-file
     uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2.1.0
     with:
-      compose-file: 'docker-compose.uffizzi.yaml'
-      server: 'https://uffizzi.dev.trustcloud.ai'
-      username: 'user@dev.trustcloud.ai'
+      compose-file: docker-compose.uffizzi.yaml
+      server: https://uffizzi.dev.trustcloud.ai
+      username: user@dev.trustcloud.ai
       password: ${{ secrets.URL_PASSWORD }}
-      project: 'trustcloud-dev'
+      project: trustcloud-dev
     permissions:
       contents: read
       pull-requests: write
