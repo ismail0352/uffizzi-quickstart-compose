@@ -161,10 +161,13 @@ jobs:
       compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
       compose-file-cache-path: ${{ needs.render-compose-file.outputs.compose-file-cache-path }}
       server: https://uffizzi.dev.trustcloud.ai
+    secrets:
+      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      url-username: user
+      url-password: ${{ secrets.URL_PASSWORD }}
     permissions:
       contents: read
       pull-requests: write
-      id-token: write
       
   delete-uffizzi-preview:
     name: Use Remote Workflow to Delete an Existing Preview
@@ -174,7 +177,10 @@ jobs:
       compose-file-cache-key: ''
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://uffizzi.dev.trustcloud.ai
+    secrets:
+      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      url-username: user
+      url-password: ${{ secrets.URL_PASSWORD }}
     permissions:
       contents: read
       pull-requests: write
-      id-token: write
