@@ -157,15 +157,15 @@ jobs:
     name: Use Remote Workflow to Preview on Uffizzi
     needs: render-compose-file
     uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2.1.0
+    secrets:
+      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      url-username: user
+      url-password: ${{ secrets.URL_PASSWORD }}
     if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     with:
       compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://uffizzi.dev.trustcloud.ai
-    secrets:
-      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
-      url-username: user
-      url-password: ${{ secrets.URL_PASSWORD }}
     permissions:
       contents: read
       pull-requests: write
