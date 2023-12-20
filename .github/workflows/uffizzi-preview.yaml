@@ -164,7 +164,8 @@ jobs:
       server: https://uffizzi.dev.trustcloud.ai
     secrets:
       personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
-      url-username: admin
+      url-username: user
+      username: user@uffizzi.com
       url-password: ${{ secrets.URL_PASSWORD }}
     permissions:
       contents: read
