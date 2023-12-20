@@ -166,6 +166,7 @@ jobs:
       personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
       url-username: user
       username: user@uffizzi.com
+      password: ${{ secrets.UFFIZZI_PASSWORD }}
       url-password: ${{ secrets.URL_PASSWORD }}
     permissions:
       contents: read
