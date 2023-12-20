@@ -163,6 +163,7 @@ jobs:
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://uffizzi.dev.trustcloud.ai
       username: user@dev.trustcloud.ai
+      project: trustcloud-dev
     secrets:
       # personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
       url-username: user
