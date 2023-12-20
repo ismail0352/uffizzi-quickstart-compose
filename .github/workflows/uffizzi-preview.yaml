@@ -162,7 +162,7 @@ jobs:
       compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
       compose-file-cache-path: docker-compose.rendered.yml
       server: https://uffizzi.dev.trustcloud.ai
-      username: user@uffizzi.com
+      username: user@dev.trustcloud.ai
     secrets:
       # personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
       url-username: user
