@@ -156,9 +156,9 @@ jobs:
   deploy-uffizzi-preview:
     name: Use Remote Workflow to Preview on Uffizzi
     needs: render-compose-file
-    uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2
+    uses: UffizziCloud/preview-action@v2
     with:
-      # compose-file: 'docker-compose.uffizzi.yml'
+      compose-file: 'docker-compose.uffizzi.yml'
       compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
       compose-file-cache-path: docker-compose.rendered.yml
       server: 'https://uffizzi.dev.trustcloud.ai'
