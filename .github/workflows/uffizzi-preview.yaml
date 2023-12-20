@@ -159,8 +159,8 @@ jobs:
     uses: UffizziCloud/preview-action@v2
     with:
       compose-file: 'docker-compose.uffizzi.yml'
-      compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
-      compose-file-cache-path: docker-compose.rendered.yml
+      # compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
+      # compose-file-cache-path: docker-compose.rendered.yml
       server: 'https://uffizzi.dev.trustcloud.ai'
       username: 'user@dev.trustcloud.ai'
       password: ChangeMeNow #${{ secrets.UFFIZZI_PASSWORD }}
