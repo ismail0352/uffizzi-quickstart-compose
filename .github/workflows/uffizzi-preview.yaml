@@ -165,7 +165,7 @@ jobs:
       username: user@dev.trustcloud.ai
       project: trustcloud-dev-lv2ax
     secrets:
-      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      # personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
       ghcr-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
       # url-username: user
       password: ${{ secrets.UFFIZZI_PASSWORD }}
