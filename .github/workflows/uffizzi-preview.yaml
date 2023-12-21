@@ -152,29 +152,39 @@ jobs:
         with:
           path: docker-compose.rendered.yml
           key: ${{ env.COMPOSE_FILE_HASH }}
-
+      
   deploy-uffizzi-preview:
     name: Use Remote Workflow to Preview on Uffizzi
     needs: render-compose-file
-    uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v3
+    uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v2.6.4
+    if: ${{ github.event_name == 'pull_request' && github.event.action != 'closed' }}
     with:
       compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
-      compose-file-cache-path: ${{ needs.render-compose-file.outputs.compose-file-cache-path }}
-      server: https://app.uffizzi.com
+      compose-file-cache-path: docker-compose.rendered.yml
+      server: https://uffizzi.dev.trustcloud.ai
+      username: user@dev.trustcloud.ai
+      project: trustcloud-dev-lv2ax
+    secrets:
+      personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      # ghcr-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+      password: ${{ secrets.UFFIZZI_PASSWORD }}
     permissions:
       contents: read
       pull-requests: write
       id-token: write
       
-  delete-uffizzi-preview:
-    name: Use Remote Workflow to Delete an Existing Preview
-    uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v3
-    if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
-    with:
-      compose-file-cache-key: ''
-      compose-file-cache-path: docker-compose.rendered.yml
-      server: https://app.uffizzi.com
-    permissions:
-      contents: read
-      pull-requests: write
-      id-token: write
+  # delete-uffizzi-preview:
+  #   name: Use Remote Workflow to Delete an Existing Preview
+  #   uses: UffizziCloud/preview-action/.github/workflows/reusable.yaml@v3
+  #   if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+  #   with:
+  #     compose-file-cache-key: ${{ needs.render-compose-file.outputs.compose-file-cache-key }}
+  #     compose-file-cache-path: docker-compose.rendered.yml
+  #     server: https://uffizzi.dev.trustcloud.ai
+  #   secrets:
+  #     personal-access-token: ${{ secrets.GHCR_ACCESS_TOKEN }}
+  #     url-username: user
+  #     url-password: ${{ secrets.URL_PASSWORD }}
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
